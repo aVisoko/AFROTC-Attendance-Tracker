@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>Database Login</title>
+	<title>Attendance Login</title>
 	<link href="app.css" rel="stylesheet" type="text/css">
     <link href="../jquery-ui-1.11.4.custom/jquery-ui.min.css" rel="stylesheet" type="text/css">
     <script src="../jquery-ui-1.11.4.custom/external/jquery/jquery.js"></script>
@@ -14,8 +14,7 @@
     </script>
 </head>
 <body>
-    <div id="loginWidget" class="ui-widget">
-        <h1 class="ui-widget-header">Login</h1>
+    <div>
         
         
         <form action="login.php" method="POST">

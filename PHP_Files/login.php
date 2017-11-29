@@ -1,6 +1,6 @@
 <?php
 
-
+include 'config.php';
 
 	// Here we are using sessions to propagate the login
 	// http://us3.php.net/manual/en/intro.session.php
@@ -55,13 +55,10 @@
         
         // Require the credentials
         
-        $host="localhost";
-        $testuse= "test";
-        $testpass = "Ncc-1701-a";
-        $dbname="af_info";
+
         
         // Connect to the database
-        $mysqli = new mysqli($host, $testuse, $testpass, $dbname);
+        $mysqli = new mysqli(host, testuse, testpass, dbname);
         
         // Check for errors
         if ($mysqli->connect_error) {
