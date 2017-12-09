@@ -12,8 +12,32 @@ session_start();
             }
 
 
+// Created by Professor Wergeles for CS2830 at the University of Missouri
+include 'config.php';
+    
+    
+        $mysqli = new mysqli(host, testuse, testpass, dbname);
 
+        if ($mysqli->connect_error) {
+            $error = 'Error: ' . $mysqli->connect_errno . ' ' . $mysqli->connect_error;
+			require "index.php";
+            exit;
+        }
+
+        
+    $usernameHolder = $_SESSION['username'];
+   
+    
+            $info = "SELECT Attendance.week, Attendance.llab, Attendance.tuesday, Attendance.thursday, Attendance.alt_lab FROM af_info.Attendance WHERE Attendance.username = ('$usernameHolder') AND Attendance.week = 1 ";
+           
+
+$mysqliResult = $mysqli->query($info);
+$row = mysqli_fetch_row($mysqliResult);
 ?>
+	
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +54,7 @@ session_start();
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
 
 
 
@@ -43,8 +68,6 @@ session_start();
 <link href="attendance.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#ffffff">
 <!-- Favicon here!!! -->
-
-
 
 
 
@@ -124,54 +147,53 @@ session_start();
 
 
 
-	<div style="width: 100%; margin:auto; margin-top: 0%; align-content: center; text-align: center;">
-<form action="submit_week1.php">  
-<input id="button" class="btn btn-primary" type="button" value=" Week 1 " name="week1" >
-</form>
-<br>
-<br>
-<form>  
-<input class= "btn btn-primary" type="button" value=" Week 2 " name="week2" onclick="loaddata()">
-</form>
-<br>
-<br>
-<input class= "btn btn-primary" type="button" value=" Week 3 " name="week3" onclick="loaddata()">
-<input class= "btn btn-primary" type="button" value=" Week 4 " name="week4" onclick="loaddata()">
-<input class= "btn btn-primary" type="button" value=" Week 5 " name="week5" onclick="updateInfo('week5')">
-<input class= "btn btn-primary" type="button" value=" Week 6 " name="week6" onclick="updateInfo('week6')">
-<input class= "btn btn-primary" type="button" value=" Week 7 " name="week7" onclick="updateInfo('week7')">
-<input class= "btn btn-primary" type="button" value=" Week 8 " name="week8" onclick="updateInfo('week8')">
-<br><br>
-<input class= "btn btn-primary" type="button" value="Week 9"   name="week9" onclick="updateInfo('week9')">
-<input class= "btn btn-primary" type="button" value="Week 10" name="week10" onclick="updateInfo('week10')">
-<input class= "btn btn-primary" type="button" value="Week 11" name="week11" onclick="updateInfo('week11')">
-<input class= "btn btn-primary" type="button" value="Week 12" name="week12" onclick="updateInfo('week12')">
-<input class= "btn btn-primary" type="button" value="Week 13" name="week13" onclick="updateInfo('week13')">
-<input class= "btn btn-primary" type="button" value="Week 14" name="week14" onclick="updateInfo('week14')">
-<input class= "btn btn-primary" type="button" value="Week 15" name="week15" onclick="updateInfo('week15')">
-<input class= "btn btn-primary" type="button" value="Week 16" name="week16" onclick="updateInfo('week16')">
-<br>
-
-<div id="txtHint"><b><?php echo $_SESSION['test']?></b></div>
-		
+	<div style="width: 100%; margin:auto; margin-top: 0%; align-content: center; text-align: center;"></div>
 
 
+<div id="somestuff">
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-center">LeadLab</th>
+<th class="text-center">Tuesday</th>
+<th class="text-center">Thursday</th>
+<th class="text-center">Alternate LeadLab</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+<tr>
+<td id="llab"     class="text-left"><?php echo $row[1]; ?></td>
+<td id="tuesday"  class="text-left"><?php echo $row[2]; ?></td>
+<td id="thursday" class="text-left"><?php echo $row[3]; ?></td>
+<td id="altllab"  class="text-left"><?php echo $row[4]; ?></td>
+</tr>
 
-
+</tbody>
+</table>
 
 
 
 </div>
 
 
-
-
-
-
-
-
-
-
+<div style="width: 100%; margin:auto; margin-top: 0%; align-content: center; text-align: center; padding-top: 50px;">
+	
+	
+<form action="updater.php" method="POST">		
+	<input type="submit" class="btn btn-primary" data-popup-open="popup-1" name="action" value="I attended Lead Lab">
+	<input type="submit" class="btn btn-primary" data-popup-open="popup-1" name="action" value="I attended Tuesday PT">	
+	<input type="submit" class="btn btn-primary" data-popup-open="popup-1" name="action" value="I attended Thursday PT">
+	<input type="submit" class="btn btn-primary" data-popup-open="popup-1" name="action" value="I attended Alternate Lead Lab">
+	<br><br>
+	<input type="submit" class="btn btn-primary" data-popup-open="popup-1" name="action" value="I did not attend Lead Lab">
+	<input type="submit" class="btn btn-primary" data-popup-open="popup-1" name="action" value="I did not attend Tuesday PT">
+	<input type="submit" class="btn btn-primary" data-popup-open="popup-1" name="action" value="I did not attend Thursday PT">
+	<input type="submit" class="btn btn-primary" data-popup-open="popup-1" name="action" value="I did not attend Alternate Lead Lab">
+	
+	</form>
+	
+	
+	</div>
 
 
 
@@ -189,7 +211,7 @@ session_start();
 <div class="footer" style="display: inline-block;"><p id="phrase">FLY FIGHT WIN</p></div>
 
 
-</div>
+
 
 
 <!-- Footer -->

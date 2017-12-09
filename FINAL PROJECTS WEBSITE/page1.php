@@ -160,7 +160,7 @@ session_start();
 
 <!-- Footer -->
 <div>
-<div class="footer" style="display: inline-block;"><p id="phrase">FLY FIGHT WIN</p></div>
+<div class="footer" style="display: inline-block;"><p id="phrase">FLY FIGHT WIN<a class="nav-link" href="admin.php">Admin?</a></p></div>
 
 
 </div>
