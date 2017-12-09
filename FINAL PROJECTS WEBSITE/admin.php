@@ -2,7 +2,7 @@
 session_start();
 
 include 'config.php';
-  		    if ($_SESSION['loggedin'] == FALSE) {
+  		 if ($_SESSION['loggedin'] == FALSE) {
               
                
 				header("Location:index.php");
@@ -112,7 +112,7 @@ mysqli_close($mysql);
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Detachment 440</a>
+  <a class="navbar-brand" href="/static_assets/Det_440.png">Detachment 440</a>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-md-0">
       <li class="nav-item">
@@ -124,11 +124,9 @@ mysqli_close($mysql);
      <li class="nav-item">
         <a class="nav-link" href="inspector_general.php">Inspector General</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">PT Log</a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="#">Documents</a>
+
+       <li class="nav-item active">
+        <a class="nav-link" href="#">Admin</a>
       </li>
       <li>
       	<a class="nav-link" id="Logout" href="logout.php">Logout</a>
