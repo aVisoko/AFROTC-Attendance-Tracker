@@ -3,6 +3,8 @@
 ## Team Member 2: Austin Parrish
 
 # Quick Summary
+# Please see the attached video link for a full demostration of the CRUD abilities of the application!
+
 
 ## The goal of this project was to create a functioning webapp that could be used to track the attendance of Detachment 440 over the course of the semester. Like a typical app, this goal required a tables for usernames and passwords, comments, and other data manipulation. In the provided example, we have supplied the first week of "ROTC related events" to demonstrate how in given specific timeframe -- say over the course of the week -- the user is responsible for returning to the app and updating the attendance tracker as time goes on.
 
@@ -35,3 +37,5 @@
 alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
 
 ## Also because I'm not entirely sure I did that right -- here is the link -- https://www.youtube.com/watch?v=eA0ire79UCU
+
+## See the file "Databasefinal.png" for a simple explanation and drawing of the schema
